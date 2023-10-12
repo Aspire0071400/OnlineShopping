@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -18,7 +19,8 @@ public class LoginPage extends AppCompatActivity {
     TextView tvNewUser;
     Button btnLogin;
     InputValidation inputValidation;
-    DataBaseHelper dbh;
+    DataBaseHelper databaseHelper;
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,7 @@ public class LoginPage extends AppCompatActivity {
         tilEmailLog = findViewById(R.id.tilEmailLog);
         tilPassLog = findViewById(R.id.tilPassLog);
         inputValidation = new InputValidation(LoginPage.this);
+        databaseHelper = new DataBaseHelper(this);
 
         tvNewUser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,8 +60,11 @@ public class LoginPage extends AppCompatActivity {
                 if(!inputValidation.isInputEditTextEmailFilled(edtEmailLogin,tilEmailLog,"Enter Correct Email")){
                     return;
                 }
-
-                dbh.checkUser(loginEmail);
+                if(!databaseHelper.checkPass(loginEmail,loginPass)){
+                    Intent i = new Intent(LoginPage.this,LandingPage.class);
+                    startActivity(i);
+                    finish();
+                }
 
             }
         });

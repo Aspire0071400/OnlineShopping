@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.net.wifi.WifiManager;
+
 public class DataBaseHelper extends SQLiteOpenHelper {
 
     private static  final int DATABASE_VERSION = 1;
@@ -81,4 +83,17 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
         return false;
     }
+
+    public boolean checkPass(String email,String pass){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("Select * from User where user_email = ? and user_password = ?",new String[] {email,pass});
+        if(cursor.getCount()>0){
+            return true;
+        }else {
+            return false;
+        }
+
+        }
+
+
 }
