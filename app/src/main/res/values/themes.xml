@@ -6,4 +6,11 @@
     </style>
 
     <style name="Theme.OnlineShopping" parent="Base.Theme.OnlineShopping" />
+    <style name="Theme.OnlineShopping.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.OnlineShopping.AppBarOverlay"
+        parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.OnlineShopping.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
