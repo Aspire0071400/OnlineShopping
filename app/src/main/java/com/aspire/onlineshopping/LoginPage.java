@@ -64,6 +64,8 @@ public class LoginPage extends AppCompatActivity {
                     Intent i = new Intent(LoginPage.this,LandingPage.class);
                     startActivity(i);
                     finish();
+                }else {
+                    Toast.makeText(LoginPage.this, "Email or Password Invalid", Toast.LENGTH_SHORT).show();
                 }
 
             }
