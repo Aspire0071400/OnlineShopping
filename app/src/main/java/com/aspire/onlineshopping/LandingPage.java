@@ -59,7 +59,6 @@ public class LandingPage extends AppCompatActivity {
             }
         }
 
-
         setSupportActionBar(toolbar);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
