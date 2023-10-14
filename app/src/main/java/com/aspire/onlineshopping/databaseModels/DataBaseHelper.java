@@ -1,11 +1,12 @@
-package com.aspire.onlineshopping;
+package com.aspire.onlineshopping.databaseModels;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.net.wifi.WifiManager;
+
+import com.aspire.onlineshopping.utils.User;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
 
@@ -95,9 +96,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("Select * from User where user_email = ? and user_password = ?",new String[] {email,pass});
         if(cursor.getCount()>0){
             return true;
-        }else {
-            return false;
-        }
+        }else return false;
 
         }
 

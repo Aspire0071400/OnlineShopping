@@ -20,13 +20,13 @@
             android:label="@string/title_activity_landing_page"
             android:theme="@style/Theme.OnlineShopping.NoActionBar" />
         <activity
-            android:name=".RegisterPage"
+            android:name=".screens.RegisterPage"
             android:exported="false" />
         <activity
-            android:name=".LoginPage"
+            android:name=".screens.LoginPage"
             android:exported="false" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".screens.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

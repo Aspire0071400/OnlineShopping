@@ -1,4 +1,4 @@
-package com.aspire.onlineshopping;
+package com.aspire.onlineshopping.utils;
 
 import android.content.Context;
 import android.inputmethodservice.Keyboard;

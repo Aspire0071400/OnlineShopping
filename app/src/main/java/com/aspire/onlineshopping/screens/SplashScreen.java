@@ -1,10 +1,12 @@
-package com.aspire.onlineshopping;
+package com.aspire.onlineshopping.screens;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.aspire.onlineshopping.R;
 
 public class SplashScreen extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.aspire.onlineshopping;
+package com.aspire.onlineshopping.utils;
 
 public class User {
     private int id;

@@ -1,4 +1,4 @@
-package com.aspire.onlineshopping;
+package com.aspire.onlineshopping.screens;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,7 +10,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.textfield.TextInputEditText;
+import com.aspire.onlineshopping.utils.InputValidation;
+import com.aspire.onlineshopping.R;
+import com.aspire.onlineshopping.databaseModels.DataBaseHelper;
+import com.aspire.onlineshopping.utils.User;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class RegisterPage extends AppCompatActivity {

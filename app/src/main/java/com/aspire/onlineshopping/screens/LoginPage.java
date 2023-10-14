@@ -1,4 +1,4 @@
-package com.aspire.onlineshopping;
+package com.aspire.onlineshopping.screens;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aspire.onlineshopping.utils.InputValidation;
+import com.aspire.onlineshopping.LandingPage;
+import com.aspire.onlineshopping.R;
+import com.aspire.onlineshopping.databaseModels.DataBaseHelper;
+import com.aspire.onlineshopping.utils.User;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class LoginPage extends AppCompatActivity {
@@ -19,7 +24,7 @@ public class LoginPage extends AppCompatActivity {
     TextView tvNewUser;
     Button btnLogin;
     InputValidation inputValidation;
-    DataBaseHelper databaseHelper;
+    DataBaseHelper db;
     User user;
 
     @Override
@@ -34,7 +39,7 @@ public class LoginPage extends AppCompatActivity {
         tilEmailLog = findViewById(R.id.tilEmailLog);
         tilPassLog = findViewById(R.id.tilPassLog);
         inputValidation = new InputValidation(LoginPage.this);
-        databaseHelper = new DataBaseHelper(this);
+        db = new DataBaseHelper(this);
 
         tvNewUser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +55,7 @@ public class LoginPage extends AppCompatActivity {
             public void onClick(View v) {
                 String loginEmail = edtEmailLogin.getText().toString().trim();
                 String loginPass = edtPassLogin.getText().toString().trim();
+                boolean check = db.checkPass(loginEmail,loginPass);
 
                 if(!inputValidation.isInputEditTextFilled(edtEmailLogin, tilEmailLog,"Enter Name First!")){
                     return;
@@ -60,12 +66,11 @@ public class LoginPage extends AppCompatActivity {
                 if(!inputValidation.isInputEditTextEmailFilled(edtEmailLogin,tilEmailLog,"Enter Correct Email")){
                     return;
                 }
-                if(!databaseHelper.checkPass(loginEmail,loginPass)){
-                    Intent i = new Intent(LoginPage.this,LandingPage.class);
+                if(check==true){
+                    Toast.makeText(LoginPage.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(LoginPage.this, LandingPage.class);
                     startActivity(i);
                     finish();
-                }else {
-                    Toast.makeText(LoginPage.this, "Email or Password Invalid", Toast.LENGTH_SHORT).show();
                 }
 
             }
