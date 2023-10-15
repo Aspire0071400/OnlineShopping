@@ -1,17 +1,13 @@
-package com.aspire.onlineshopping;
+package com.aspire.onlineshopping.cartutils;
 
-public class ItemPOJO {
-    private final int productView;
+public class CartPOJO {
+    private final String productView;
     private final String brandName;
     private final String productDescription;
     private final String price;
-    private final int cart;
 
-    public int getCart() {
-        return cart;
-    }
 
-    public int getProductView() {
+    public String getProductView() {
         return productView;
     }
 
@@ -27,11 +23,11 @@ public class ItemPOJO {
         return price;
     }
 
-    public ItemPOJO(int productView, String brandName, String productDescription, String price,int cart) {
+
+    public CartPOJO(String productView, String brandName, String productDescription, String price) {
         this.productView = productView;
         this.brandName = brandName;
         this.productDescription = productDescription;
         this.price = price;
-        this.cart = cart;
     }
 }
