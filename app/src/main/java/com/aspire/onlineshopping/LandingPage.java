@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -22,9 +23,13 @@ import com.aspire.onlineshopping.databaseModels.DataBaseHelper;
 import com.aspire.onlineshopping.menu.AccountInfoFragment;
 import com.aspire.onlineshopping.menu.CartFragment;
 import com.aspire.onlineshopping.menu.HomeFragment;
+import com.aspire.onlineshopping.screens.LoginPage;
 import com.google.android.material.navigation.NavigationView;
 
 public class LandingPage extends AppCompatActivity {
+
+    public static String Uname;
+    public static String Uemail;
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -56,8 +61,12 @@ public class LandingPage extends AppCompatActivity {
             while (cursor.moveToNext()){
                 tvUserNameDisplay.setText(""+cursor.getString(1));
                 tvEmailDisplay.setText(""+cursor.getString(2));
+
             }
+
         }
+        Uname = tvUserNameDisplay.getText().toString().trim();
+        Uemail = tvEmailDisplay.getText().toString().trim();
 
         setSupportActionBar(toolbar);
 
@@ -77,9 +86,10 @@ public class LandingPage extends AppCompatActivity {
                     loadFragment(new AccountInfoFragment());
                 } else if (id==R.id.cart) {
                     loadFragment(new CartFragment());
-                } else {
-                    Toast.makeText(LandingPage.this, "Move to Login", Toast.LENGTH_SHORT).show();
-                }
+                } else if(id==R.id.signOut){
+                    Intent i = new Intent(LandingPage.this, LoginPage.class);
+                    startActivity(i);
+                }else {Toast.makeText(LandingPage.this,"error",Toast.LENGTH_SHORT).show();}
                 drawerLayout.closeDrawer(GravityCompat.START);
 
                 return false;
